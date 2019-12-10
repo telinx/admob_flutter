@@ -10,11 +10,13 @@ class LazyAdmobBanner extends StatelessWidget {
     this.adUnitId,
     this.adSize = AdmobBannerSize.BANNER,
     this.lazeTime = 1000,
+    this.placeholderWidget
   }) : super(key: key);
 
   final String adUnitId;
   final AdmobBannerSize adSize;
   final int lazeTime;
+  final Widget placeholderWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class LazyAdmobBanner extends StatelessWidget {
           return Container(
             width: adSize.width.toDouble(),
             height: adSize.height.toDouble(),
-            child: !snapshot.data ?  Container() : _buildLazyAdBannerWidget(context),
+            child: !snapshot.data ?  placeholderWidget : _buildLazyAdBannerWidget(context),
           );
         },
       );
