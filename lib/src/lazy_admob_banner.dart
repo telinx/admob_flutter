@@ -25,6 +25,7 @@ class LazyAdmobBanner extends StatelessWidget {
         future: lazyLoad(),
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot){
           return Container(
+            alignment: Alignment.center,
             width: adSize.width.toDouble(),
             height: adSize.height.toDouble(),
             child: !snapshot.data ?  placeholderWidget : _buildLazyAdBannerWidget(context),
