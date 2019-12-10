@@ -44,8 +44,7 @@ class _MyAppState extends State<MyApp> {
     rewardAd.load();
   }
 
-  void handleEvent(
-      AdmobAdEvent event, Map<String, dynamic> args, String adType) {
+  void handleEvent(AdmobAdEvent event, Map<String, dynamic> args, String adType) {
     switch (event) {
       case AdmobAdEvent.loaded:
         showSnackBar('New Admob $adType Ad loaded!');
@@ -96,6 +95,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      showPerformanceOverlay: true,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
@@ -200,26 +200,13 @@ class _MyAppState extends State<MyApp> {
           padding: EdgeInsets.all(20.0),
           itemCount: 1000,
           itemBuilder: (BuildContext context, int index) {
-            if (index != 0 && index % 6 == 0) {
-              return Column(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(bottom: 20.0),
-                    child: AdmobBanner(
-                      adUnitId: getBannerAdUnitId(),
-                      adSize: bannerSize,
-                      listener:
-                          (AdmobAdEvent event, Map<String, dynamic> args) {
-                        handleEvent(event, args, 'Banner');
-                      },
-                    ),
-                  ),
-                  Container(
-                    height: 200.0,
-                    margin: EdgeInsets.only(bottom: 20.0),
-                    color: Colors.cyan,
-                  ),
-                ],
+            if (index != 0 && index % 10 == 0) {
+              return Container(
+                margin: EdgeInsets.only(bottom: 20.0),
+                child: LazyAdmobBanner(
+                  adUnitId: getBannerAdUnitId(),
+                  adSize: bannerSize,
+                ),
               );
             }
             return Container(
@@ -227,6 +214,34 @@ class _MyAppState extends State<MyApp> {
               margin: EdgeInsets.only(bottom: 20.0),
               color: Colors.cyan,
             );
+
+            // if (index != 0 && index % 6 == 0) {
+            //   return Column(
+            //     children: <Widget>[
+            //       Container(
+            //         margin: EdgeInsets.only(bottom: 20.0),
+            //         child: AdmobBanner(
+            //           adUnitId: getBannerAdUnitId(),
+            //           adSize: bannerSize,
+            //           listener:
+            //               (AdmobAdEvent event, Map<String, dynamic> args) {
+            //             handleEvent(event, args, 'Banner');
+            //           },
+            //         ),
+            //       ),
+            //       Container(
+            //         height: 200.0,
+            //         margin: EdgeInsets.only(bottom: 20.0),
+            //         color: Colors.cyan,
+            //       ),
+            //     ],
+            //   );
+            // }
+            // return Container(
+            //   height: 200.0,
+            //   margin: EdgeInsets.only(bottom: 20.0),
+            //   color: Colors.cyan,
+            // );
           },
         ),
       ),
