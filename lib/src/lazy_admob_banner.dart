@@ -9,10 +9,12 @@ class LazyAdmobBanner extends StatelessWidget {
     Key key,
     this.adUnitId,
     this.adSize = AdmobBannerSize.BANNER,
+    this.lazeTime = 1000,
   }) : super(key: key);
 
   final String adUnitId;
   final AdmobBannerSize adSize;
+  final int lazeTime;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,7 @@ class LazyAdmobBanner extends StatelessWidget {
   }
 
   Future<bool> lazyLoad(){
-    return Future.delayed(Duration(milliseconds: 1000)).then((_){
+    return Future.delayed(Duration(milliseconds: lazeTime)).then((_){
       return true;
     });
   }
