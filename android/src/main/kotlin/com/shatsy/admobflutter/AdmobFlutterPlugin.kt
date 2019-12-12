@@ -40,7 +40,7 @@ class AdmobFlutterPlugin(private val context: Context): MethodCallHandler {
     }
   }
 
-  override fun onMethodCall(call: MethodCall, result: Result) {
+   fun onMethodCall(call: MethodCall, result: Result) {
     when(call.method) {
       "getPlatformVersion" -> result.success("Android ${android.os.Build.VERSION.RELEASE}")
       "initialize" -> MobileAds.initialize(context, call.arguments())
