@@ -36,8 +36,8 @@ class _AdmobBannerState extends State<AdmobBanner> {
           key: UniqueKey(),
           viewType: 'admob_flutter/banner',
           creationParams: <String, dynamic>{
-            "adUnitId": widget.adUnitId,
-            "adSize": widget.adSize.toMap,
+            'adUnitId': widget.adUnitId,
+            'adSize': widget.adSize.toMap,
           },
           creationParamsCodec: StandardMessageCodec(),
           onPlatformViewCreated: _onPlatformViewCreated,
@@ -51,8 +51,8 @@ class _AdmobBannerState extends State<AdmobBanner> {
         child: UiKitView(
           viewType: 'admob_flutter/banner',
           creationParams: <String, dynamic>{
-            "adUnitId": widget.adUnitId,
-            "adSize": widget.adSize.toMap,
+            'adUnitId': widget.adUnitId,
+            'adSize': widget.adSize.toMap,
           },
           creationParamsCodec: StandardMessageCodec(),
           onPlatformViewCreated: _onPlatformViewCreated,
